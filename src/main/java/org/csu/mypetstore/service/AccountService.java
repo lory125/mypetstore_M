@@ -6,7 +6,7 @@ import org.csu.mypetstore.persistence.Impl.AccountDAOImpl;
 
 public class AccountService {
 
-    private AccountDAO accountDAO;
+    private final AccountDAO accountDAO;
 
     public AccountService(){
         accountDAO = new AccountDAOImpl();

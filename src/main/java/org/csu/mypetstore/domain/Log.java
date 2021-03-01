@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -128,7 +129,7 @@ public class Log {
                 fi.createNewFile();
             }
             FileOutputStream fiou = new FileOutputStream(fi,true);
-            OutputStreamWriter opw = new OutputStreamWriter(fiou, "UTF-8");
+            OutputStreamWriter opw = new OutputStreamWriter(fiou, StandardCharsets.UTF_8);
             bw= new BufferedWriter(opw);
         }catch(Exception e) {
 

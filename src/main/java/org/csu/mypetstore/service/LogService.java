@@ -6,7 +6,7 @@ import org.csu.mypetstore.persistence.LogDAO;
 
 public class LogService {
     Log log;
-    private LogDAO logDAO;
+    private final LogDAO logDAO;
 
     public LogService(){
         log = new Log();
@@ -14,7 +14,7 @@ public class LogService {
     }
 
     public String logInfo(Object ...s){
-        return log.logInfomation(s);
+        return Log.logInfomation(s);
     }
 
     public void insertLogInfo(String username, String logInfo){

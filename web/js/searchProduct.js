@@ -22,7 +22,7 @@ var setClass = {
     addClass: function(elements,cName){ // 添加class
         if( !this.hasClass( elements,cName ) ){
             elements.className += " " + cName;
-        };
+        }
     },
     removeClass: function(elements,cName){  // 移除某个class
         if( this.hasClass( elements,cName ) ){

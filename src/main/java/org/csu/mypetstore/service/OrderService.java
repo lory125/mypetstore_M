@@ -19,10 +19,10 @@ import org.csu.mypetstore.persistence.SequenceDAO;
 
 public class OrderService {
 
-  private ItemDAO itemDAO;
-  private OrderDAO orderDAO;
-  private SequenceDAO sequenceDAO;
-  private LineItemDAO lineItemDAO;
+  private final ItemDAO itemDAO;
+  private final OrderDAO orderDAO;
+  private final SequenceDAO sequenceDAO;
+  private final LineItemDAO lineItemDAO;
 
   public OrderService(){
     itemDAO = new ItemDAOImpl();
@@ -34,7 +34,7 @@ public class OrderService {
   public void insertOrder(Order order) {
     order.setOrderId(getNextId("ordernum"));
     for (int i = 0; i < order.getLineItems().size(); i++) {
-      LineItem lineItem = (LineItem) order.getLineItems().get(i);
+      LineItem lineItem = order.getLineItems().get(i);
       String itemId = lineItem.getItemId();
       Integer increment = new Integer(lineItem.getQuantity());
       Map<String, Object> param = new HashMap<String, Object>(2);
@@ -46,7 +46,7 @@ public class OrderService {
     orderDAO.insertOrder(order);
     orderDAO.insertOrderStatus(order);
     for (int i = 0; i < order.getLineItems().size(); i++) {
-      LineItem lineItem = (LineItem) order.getLineItems().get(i);
+      LineItem lineItem = order.getLineItems().get(i);
       lineItem.setOrderId(order.getOrderId());
       lineItemDAO.insertLineItem(lineItem);
     }
@@ -57,7 +57,7 @@ public class OrderService {
     order.setLineItems(lineItemDAO.getLineItemsByOrderId(orderId));
 
     for (int i = 0; i < order.getLineItems().size(); i++) {
-      LineItem lineItem = (LineItem) order.getLineItems().get(i);
+      LineItem lineItem = order.getLineItems().get(i);
       Item item = itemDAO.getItem(lineItem.getItemId());
       item.setQuantity(itemDAO.getInventoryQuantity(lineItem.getItemId()));
       lineItem.setItem(item);

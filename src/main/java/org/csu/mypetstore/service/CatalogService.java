@@ -14,9 +14,9 @@ import java.util.List;
 
 public class CatalogService {
     //业务逻辑层调用数据访问层
-    private CategoryDAO categoryDAO;
-    private ProductDAO productDAO;
-    private ItemDAO itemDAO;
+    private final CategoryDAO categoryDAO;
+    private final ProductDAO productDAO;
+    private final ItemDAO itemDAO;
 
 
     public CatalogService(){

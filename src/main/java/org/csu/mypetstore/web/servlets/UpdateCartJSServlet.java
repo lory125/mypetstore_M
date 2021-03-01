@@ -31,11 +31,11 @@ public class UpdateCartJSServlet extends HttpServlet {
 
         while (cartItemIterator.hasNext()) {
             //产品数量增加
-            CartItem cartItem = (CartItem) cartItemIterator.next();
+            CartItem cartItem = cartItemIterator.next();
             String itemId = cartItem.getItem().getItemId();
 
             try {
-                int quantity = Integer.parseInt((String) request.getParameter("quantity"));
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
                 cart.setQuantityByItemId(itemId, quantity);
                 if (quantity < 1) {
                     cartItemIterator.remove();

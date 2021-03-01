@@ -48,7 +48,7 @@ public class AddItemToCartServlet extends HttpServlet {
             cart.incrementQuantityByItemId(workingItemId);
 
             if(account != null){
-                HttpServletRequest httpRequest= (HttpServletRequest) request;
+                HttpServletRequest httpRequest= request;
                 String strBackUrl = "http://" + request.getServerName() + ":" + request.getServerPort()
                         + httpRequest.getContextPath() + httpRequest.getServletPath() + "?" + (httpRequest.getQueryString());
 
